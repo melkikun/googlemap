@@ -8,7 +8,6 @@
         <div id="sample" style="width:100%;height:580px;"></div>
         <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCgOQ0wvjXVTKOyTLLjEhIb71ZRJW8U48g"></script>
         <script>
-
             var map;
             var gmarkers = [];
             ;
@@ -50,7 +49,6 @@
             }
             google.maps.event.addDomListener(window, 'load', loadMap);
 
-
             function clearx() {
                 console.log(map.getCenter());
                 for (i = 0; i < gmarkers.length-1; i++) {
@@ -58,6 +56,5 @@
                 }
             }
         </script>
-
     </body>
 </html>
