@@ -10,6 +10,8 @@
         <script>
 
             var map;
+            var gmarkers = [];
+            ;
             function loadMap() {
 //                inisialisasi map untuk google map
                 var mapOptions = {
@@ -25,10 +27,10 @@
                     ["3", -7.346436, 112.585151],
                     ["4", -7.336436, 112.595151],
                 ];
-                var marker;
+
                 var info = new google.maps.InfoWindow();
                 for (var i = 0; i < m.length; i++) {
-                    marker = new google.maps.Marker({
+                    var marker = new google.maps.Marker({
                         position: new google.maps.LatLng(m[i][1], m[i][2]),
                         map: map,
                         animation: google.maps.Animation.Drop,
@@ -40,9 +42,10 @@
                             info.open(map, marker);
                         }
                     })(marker, i));
+                    gmarkers.push(marker);
                 }
                 map.addListener('center_changed', function () {
-                    console.log(map.getCenter().getLat());
+                    console.log(map.getCenter());
                 });
             }
             google.maps.event.addDomListener(window, 'load', loadMap);
@@ -50,6 +53,9 @@
 
             function clearx() {
                 console.log(map.getCenter());
+                for (i = 0; i < gmarkers.length-1; i++) {
+                    gmarkers[i].setMap(null);
+                }
             }
         </script>
 
